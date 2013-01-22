@@ -1,0 +1,60 @@
+﻿<Window x:Class="DioramaExhibitionSupportSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:kv="clr-namespace:Microsoft.Samples.Kinect.WpfViewers;assembly=Microsoft.Samples.Kinect.WpfViewers"
+        Title="MainWindow" Height="359" Width="727" Left="700">
+    <Grid Height="320" VerticalAlignment="Top">
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="320" Height="240" Grid.Row="1">
+            <kv:KinectDepthViewer x:Name="DepthViewer" KinectSensorManager="{Binding KinectSensorManager}" />
+            <Canvas  Name="MyCanvasViewer">
+                <kv:KinectColorViewer
+                                    KinectSensorManager="{Binding KinectSensorManager}"
+                                    Width="{Binding ElementName=DepthViewer, Path=ActualWidth}"
+                                    Height="240"
+                                    Canvas.Top="0" />
+                <!--<kv:KinectSkeletonViewer
+                                    KinectSensorManager="{Binding KinectSensorManager}"
+                                    Width="{Binding ElementName=DepthViewer, Path=ActualWidth}"
+                                    Height="240"
+                                    ShowBones="True" ShowJoints="True" ShowCenter="True" ImageType="Color" Canvas.Top="0" />-->
+            </Canvas>
+        </Grid>
+        <TextBox Height="25" HorizontalAlignment="Left" Margin="50,7,0,0" Name="Start" VerticalAlignment="Top" Width="428" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="50,40,0,0" Name="End" VerticalAlignment="Top" Width="428" />
+        <Label Content="Start" HorizontalAlignment="Left" Name="label1" Margin="12,7,0,285" />
+        <Label Content="End" Height="28" HorizontalAlignment="Left" Margin="12,0,0,251" Name="label2" VerticalAlignment="Bottom" />
+        <GroupBox Header="OpenGL Control" Height="244" HorizontalAlignment="Left" Margin="12,70,0,0" Name="groupBox1" VerticalAlignment="Top" Width="356">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="57*" />
+                    <RowDefinition Height="162*" />
+                </Grid.RowDefinitions>
+
+                <Button Content="Up" Grid.Row="1" Height="25" HorizontalAlignment="Left" Margin="61,12,0,0" Name="btnup" VerticalAlignment="Top" Width="46" Click="btnup_Click" />
+                <Button Content="Left" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="11,43,0,0" Name="btnleft" VerticalAlignment="Top" Width="44" Click="btnleft_Click" />
+                <Button Content="Right" Grid.Row="1" Height="23" HorizontalAlignment="Right" Margin="0,43,184,0" Name="btnright" VerticalAlignment="Top" Width="50" Click="btnright_Click" />
+                <Button Content="Down" Grid.Row="1" Height="26" HorizontalAlignment="Left" Margin="61,72,0,0" Name="btndown" VerticalAlignment="Top" Width="46" Click="btndown_Click" />
+                <Button Content="+" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="61,43,0,0" Name="btnplus" VerticalAlignment="Top" Width="20" Click="btnplus_Click" />
+                <Button Content="-" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="87,43,0,0" Name="btnminus" VerticalAlignment="Top" Width="20" Click="btnminus_Click" />
+                <Label Content="Kinect Coordinate" Grid.Row="1" Height="25" HorizontalAlignment="Left" Margin="172,2,0,0" Name="label5" VerticalAlignment="Top" Width="140" />
+                <TextBox Grid.Row="1" Height="25" HorizontalAlignment="Left" Margin="203,28,0,0" Name="txtEyex" VerticalAlignment="Top" Width="41" IsReadOnlyCaretVisible="True" />
+                <Label Content="World Coordinate" Height="25" HorizontalAlignment="Left" Margin="172,52,0,0" Name="label7" VerticalAlignment="Top" Width="140" Grid.Row="1" />
+                <TextBox Height="26" HorizontalAlignment="Left" Margin="296,28,0,0" Name="txtEyez" VerticalAlignment="Top" Width="41" Grid.Row="1" IsReadOnlyCaretVisible="True" />
+                <TextBox Height="26" HorizontalAlignment="Left" Margin="250,28,0,0" Name="txtEyey" VerticalAlignment="Top" Width="40" Grid.Row="1" IsReadOnlyCaretVisible="True" />
+                <Label Content="Eye" Grid.Row="1" Height="28" HorizontalAlignment="Left" Margin="172,26,0,0" Name="label9" VerticalAlignment="Top" />
+                <Label Content="K" Height="28" HorizontalAlignment="Left" Margin="172,81,0,0" Name="label10" VerticalAlignment="Top" Grid.Row="1" />
+                <Label Content="P" Height="28" HorizontalAlignment="Left" Margin="172,110,0,0" Name="label11" VerticalAlignment="Top" Grid.Row="1" />
+                <TextBox Height="25" HorizontalAlignment="Left" Margin="204,81,0,0" Name="txtKinectx" VerticalAlignment="Top" Width="41" Grid.Row="1" />
+                <TextBox Height="26" HorizontalAlignment="Left" Margin="297,81,0,0" Name="txtKinectz" VerticalAlignment="Top" Width="41" Grid.Row="1" />
+                <TextBox Height="26" HorizontalAlignment="Left" Margin="251,81,0,0" Name="txtKinecty" VerticalAlignment="Top" Width="40" Grid.Row="1" />
+                <TextBox Height="25" HorizontalAlignment="Left" Margin="204,112,0,0" Name="txtProjectorx" VerticalAlignment="Top" Width="41" Grid.Row="1" />
+                <TextBox Height="26" HorizontalAlignment="Left" Margin="297,112,0,0" Name="txtProjectorz" VerticalAlignment="Top" Width="41" Grid.Row="1" />
+                <TextBox Height="26" HorizontalAlignment="Left" Margin="251,112,0,0" Name="txtProjectory" VerticalAlignment="Top" Width="40" Grid.Row="1" />
+                <Button Content="Start" Height="27" HorizontalAlignment="Left" Margin="7,110,0,0" Name="btnStart" VerticalAlignment="Top" Width="75" Grid.Row="1" Click="btnStart_Click" />
+                <Button Content="Stop" Height="27" HorizontalAlignment="Left" Margin="87,110,0,0" Name="btnStop" VerticalAlignment="Top" Width="74" Click="button2_Click" Grid.Row="1" />
+                <Button Content="Narrow" Height="22" HorizontalAlignment="Left" Margin="38,15,0,0" Name="button1" VerticalAlignment="Top" Width="76" Click="button1_Click" />
+                <Button Content="Expansion" Height="22" HorizontalAlignment="Right" Margin="0,15,87,0" Name="button2" VerticalAlignment="Top" Width="76" Click="button2_Click_1" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
